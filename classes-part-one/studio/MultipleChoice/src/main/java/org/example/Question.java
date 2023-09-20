@@ -20,6 +20,10 @@ public abstract class Question {
         this.isCorrect = isCorrect;
     }
 
+    public Question(String qText) {
+        this.qText = qText;
+    }
+
     public String getQText() {
         return qText;
     }

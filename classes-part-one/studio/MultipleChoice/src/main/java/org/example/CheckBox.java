@@ -5,59 +5,37 @@ import java.util.ArrayList;
 import java.util.List;
 public class CheckBox extends Question {
 
-        Scanner input = new Scanner(System.in);
-
-        String question = "Can you name all the different types of chocolate?";
-        String[] types = {
-                "a) Milk",
-                "b) Dark",
-                "c) White",
-                "d) Raw",
-                "e) Unsweetened",
-                "f) Blonde",
-                "g) Bitter",
-        };
+    private List<String> multiAnswers;
+    private List<Integer> correctAnswers;
 
     public CheckBox(String qText, String qType, String[] answerChoices, int correctAnswer, boolean isCorrect) {
         super(qText, qType, answerChoices, correctAnswer, isCorrect);
 
-
-
-    ArrayList<String> correctTypes = new ArrayList<>();
-        correctTypes.add("A");
-        correctTypes.add("B");
-        correctTypes.add("C");
-        correctTypes.add("D");
-        correctTypes.add("E");
-        correctTypes.add("F");
-        correctTypes.add("G");
-       // System.out.println("correctTypes is: " + correctTypes);
-        System.out.println(question);
-        for (String type : types) {
-            System.out.println(type);
         }
+    public CheckBox(String qText, List<String> multiAnswers, List<Integer> correctAnswers) {
+        super(qText);
+        this.multiAnswers = multiAnswers;
+        this.correctAnswers = correctAnswers;
 
-        System.out.println("Enter all of your choices (a,b,c,d,e,f,g)");
-        String userInput = input.nextLine().toUpperCase();
-
-        String[] userChoices = userInput.split("");
-
-        boolean allCorrect = true;
-        for (String userChoice : userChoices) {
-            if (!correctTypes.contains(userChoice)) {
-                allCorrect = false;
-                break;
-            }
+    }
+    @Override
+    public void displayQuestion() {
+        System.out.println(getQText());
+        for (int i = 0; i < multiAnswers.size(); i++) {
+            System.out.println((char) ('A' + i) + ") " + multiAnswers.get(i));
         }
-        System.out.println("length of userChoices is: " + userChoices.length);
-        if (allCorrect && (userChoices.length == correctTypes.size())) {
-            System.out.println("Correct! Those are all types of chocolate!");
-        } else {
-            System.out.println("Oops! Yu don't know your chocolates yet. They are:");
-            for (String userChoice : userChoices) {
-                System.out.println(correctTypes + " ");
-            }
+    }
+
+    @Override
+    public boolean checkAnswer(String userAnswer) {
+        String[] userResponses = userAnswer.split("");
+        List<Integer> userSelectedAnswers = new ArrayList<>();
+
+        for (String response : userResponses) {
+            int selectedAnswer = response.toUpperCase().charAt(0) - 'A';
+            userSelectedAnswers.add(selectedAnswer);
+
         }
-        input.close();
+        return userSelectedAnswers.containsAll(correctAnswers) && correctAnswers.containsAll(userSelectedAnswers);
     }
 }
