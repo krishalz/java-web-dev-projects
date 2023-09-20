@@ -2,12 +2,8 @@ package org.example;
 import java.util.Scanner;
 
 
-public class MultipleChoice { //extends Question {
-public static void main(String[] args) {
-
-
- //   public MultipleChoice(String qText, String qType, boolean isCorrect) {
-//        super(qText, qType, isCorrect);
+public class MultipleChoice extends Question {
+//public static void main(String[] args) {
 
     Scanner input = new Scanner(System.in);
     String question = "What is the best type of chocolate?";
@@ -15,6 +11,14 @@ public static void main(String[] args) {
     String choiceDark = "b) Dark Chocolate";
     String choiceWhite = "c) White Chocolate";
     String choiceUnSweet = "d) Unsweetened Chocolate";
+
+
+
+    public MultipleChoice(String qText, String qType, String[] answerChoices, int correctAnswer, boolean isCorrect) {
+        super(qText, qType, answerChoices, correctAnswer, isCorrect);
+
+
+
 
     System.out.println("Question: "+question);
     System.out.println(choiceMilk);

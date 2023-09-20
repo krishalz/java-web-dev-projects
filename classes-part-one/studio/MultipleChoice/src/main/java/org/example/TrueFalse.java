@@ -1,13 +1,14 @@
 package org.example;
 import java.util.Scanner;
 public class TrueFalse extends Question {
-    public TrueFalse(String qText, String qType, boolean isCorrect) {
-        super(qText, qType, isCorrect);
 
         Scanner input = new Scanner(System.in);
-        String question = "Dark chocolate is the best (t/f)";
+        String question = "Is dark chocolate is the best (t/f)";
         String selectTrue = "a) True";
         String selectFalse = "b) False";
+
+    public TrueFalse(String qText, String qType, String[] answerChoices, int correctAnswer, boolean isCorrect) {
+        super(qText, qType, answerChoices, correctAnswer, isCorrect);
 
         System.out.println(question);
         System.out.println(selectTrue);

@@ -3,10 +3,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-public class CheckBox { //extends Question {
-    public static void main(String[] args) {
- //   public CheckBox(String qText, String qType, boolean isCorrect) {
- //       super(qText, qType, isCorrect);
+public class CheckBox extends Question {
 
         Scanner input = new Scanner(System.in);
 
@@ -21,7 +18,12 @@ public class CheckBox { //extends Question {
                 "g) Bitter",
         };
 
-        ArrayList<String> correctTypes = new ArrayList<>();
+    public CheckBox(String qText, String qType, String[] answerChoices, int correctAnswer, boolean isCorrect) {
+        super(qText, qType, answerChoices, correctAnswer, isCorrect);
+
+
+
+    ArrayList<String> correctTypes = new ArrayList<>();
         correctTypes.add("A");
         correctTypes.add("B");
         correctTypes.add("C");
